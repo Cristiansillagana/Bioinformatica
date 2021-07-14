@@ -6,7 +6,9 @@ En este curso se revisarán los siguientes temas:
 - Conceptos de bioinformatica
 - Programación
 - Python 
+- Expresiones regualare
 - R
+- Bioconductor
 
 # Objetivo del curso: 
 
@@ -20,5 +22,5 @@ En este cursos se aprenderá sobre el uso de herramientas informáticas para el 
 - Abigail Galarza
 
 **Estudiantes**
-- Critian Sillaga
+- Critian Sillagana
 

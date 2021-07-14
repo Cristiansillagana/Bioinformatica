@@ -1,3 +1,5 @@
 #!/user/bin/env bash
 
-echo "Hola"
+echo "Hola con todos bienvenido a la clase"
+echo"estamos en la segunda semana"
+
