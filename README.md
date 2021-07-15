@@ -1,5 +1,7 @@
 # BIOINFORMÁTICA
 Se trabaja con python versión 3.8.8
+
+
 En este curso se revisarán los siguientes temas: 
 - Unix
 - Linea de comando
