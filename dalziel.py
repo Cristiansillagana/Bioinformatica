@@ -33,6 +33,15 @@ input("ciudad:")
 import pandas as pd
 df=pd.read_csv("Dalziel2016_data.csv")
 AÑOS=df["year"][0:1118]
+# Importe el módulo dalziel y ejecute la función avgbiweeks con una sola ciudad
+import pandas as pd
+df=pd.read_csv("Dalziel2016_data.csv")
+Biweek= df["biweek"][0:1118]
+Ciudad= df["loc"][0:1118]
+poblacion= df ["pop"][0:1118]
+casos= df["cases"][0:1118]
+mean= casos / poblacion
+print(Ciudad, Biweek,mean)
 CASOS=df["cases"][0:1118]
 POBLACION=df["pop"][0:1118]
 #ahora para un determinado año
