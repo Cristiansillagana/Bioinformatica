@@ -19,3 +19,21 @@ def avgcity (city, my_csv):
         if key == city:
             avg_case= 100000*citypop[key][1]/citypop[key][0]
             return print(key, avg_case)
+def avgyear (city, my_csv):
+    """
+    funcion para extraer  el valor promedio de infectados
+    """
+    citypop ={}
+    for line in my_csv:
+        myyear = line ["year"]
+        pop = float(line["pop"])
+        if line["cases"] != "NA":
+            case= float(line ["cases"])
+            citypop[myyear]= citypop.get(myyear, [0,0,0])
+            citypop[myyear][0]= citypop[myyear][0]+ pop
+            citypop[myyear][1]= citypop[myyear][1]+ case
+            citypop[myyear][2]=citypop[myyear][2] + 1
+    for key in citypop:
+        if key == city:
+            avg_case1= 100000*citypop[key][1]/citypop[key][0]
+            return print(key, avg_case1)
