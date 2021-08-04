@@ -1,57 +1,110 @@
 #funciones de infeccion
-import pandas as pd
+import pandas as pd #importa la libreria pandas y se guarda con el comando as como pd
 
-def avgcity (city, my_csv):
+def avgcity (city, my_csv): #se crea la función con el comando def y con nombre avgcity 
+#y se coloca el parametro city, my_csv es la ruta del archivo Dalziel
     """
     funcion para extraer  el valor promedio de infectados
     """
-    citypop ={}
+    citypop ={} # se crea un diccionario vacio
+# se crea un bucle for, donde se dice que para cada linea del archvio my_csv, lo guarde en line.
     for line in my_csv:
-        mycity = line ["loc"]
-        pop = float(line["pop"])
-        if line["cases"] != "NA":
-            case= float(line ["cases"])
-            citypop[mycity]= citypop.get(mycity, [0,0,0])
-            citypop[mycity][0]= citypop[mycity][0]+ pop
-            citypop[mycity][1]= citypop[mycity][1]+ case
-            citypop[mycity][2]=citypop[mycity][2] + 1
+        mycity = line ["loc"] #identificar en las lineas los datos que correspondan a loc (localidad) 
+# y lo guarde en mycity
+        pop = float(line["pop"]) #igualmente identificar en line cada linea que corresponda a pop
+#(población) y se asegura con el comando float que dichos valores se trnasformen en un numero, todo eso
+# se gaurda en la variable pop
+        if line["cases"] != "NA": #Se usa if como condicionalidad, donde hace referencia si es que el line
+# el numero de casos es diferente a NA, ejerce las siguientes ordenes.
+            case= float(line ["cases"]) #identifica en line, cada valor que corresponda a cases y convierteles 
+# a un numero con float y todo eso guardale en case
+            citypop[mycity]= citypop.get(mycity, [0,0,0]) #guardale en el diccionario vacio citypop cada una de las 
+# localidades que esta definida como mycity y creale un indenficador con tes diferentes niveles. Get ayuda a devolver
+# los valores para cada keys del diccionario.
+            citypop[mycity][0]= citypop[mycity][0]+ pop #el primer item se va a sumar los valores de población 
+            citypop[mycity][1]= citypop[mycity][1]+ case # para elsegundo item se va a sumar los valores de casos
+            citypop[mycity][2]=citypop[mycity][2] + 1 # el tercer realiza la función de contar cuantas veces se cumplen
+# las condiciones.
+# todo lo anterior aliemnta la diccionario citypop
+#Se crea nuevamente un bucle for que permite ingresar al diccionario citypop si se cumple la siguiente condicion
+# se debe de guarda en la variable key
     for key in citypop:
-        if key == city:
-            avg_case= 100000*citypop[key][1]/citypop[key][0]
-            return print(key, avg_case)
-def avgyear (city, my_csv):
+        if key == city:# la condiccion dice si que el key es exactamente igual a city, entonces se calcula lo siguiente:
+            avg_case= 100000*citypop[key][1]/citypop[key][0] # el porcentaje de casos  por poblacion, dado que sale un numro
+ # muy pequeño se multiplica por 100000, es decir el porcentaje de casos e infeccion es por cada 100000 habitantes.
+            return print(key, avg_case)# finalmente retorna el key con la variable avg_case.
+
+
+
+
+
+
+def avgyear (city, my_csv): #se crea la función con el comando def y con nombre avgyear 
+#y se coloca el parametro city, my_csv es la ruta del archivo Dalziel
     """
     funcion para extraer  el valor promedio de infectados
     """
-    citypop ={}
+    citypop ={} # se crea un diccionario vacio
+# se crea un bucle for, donde se dice que para cada linea del archvio my_csv, lo guarde en line.
     for line in my_csv:
-        myyear = line ["year"]
-        pop = float(line["pop"])
-        if line["cases"] != "NA":
-            case= float(line ["cases"])
-            citypop[myyear]= citypop.get(myyear, [0,0,0])
-            citypop[myyear][0]= citypop[myyear][0]+ pop
-            citypop[myyear][1]= citypop[myyear][1]+ case
-            citypop[myyear][2]=citypop[myyear][2] + 1
+        myyear = line ["year"] #identificar en las lineas los datos que correspondan a year (años) 
+# y lo guarde en mycity
+        pop = float(line["pop"]) #igualmente identificar en line cada linea que corresponda a pop
+#(población) y se asegura con el comando float que dichos valores se trnasformen en un numero, todo eso
+# se gaurda en la variable pop
+        if line["cases"] != "NA": #Se usa if como condicionalidad, donde hace referencia si es que el line
+# el numero de casos es diferente a NA, ejerce las siguientes ordenes.
+            case= float(line ["cases"]) #identifica en line, cada valor que corresponda a cases y convierteles 
+# a un numero con float y todo eso guardale en case
+            citypop[myyear]= citypop.get(myyear, [0,0,0]) #guardale en el diccionario vacio citypop cada una de las 
+# localidades que esta definida como myyear y creale un indenficador con tes diferentes niveles. Get ayuda a devolver
+# los valores para cada keys del diccionario.
+            citypop[myyear][0]= citypop[myyear][0]+  #el primer item se va a sumar los valores de población
+            citypop[myyear][1]= citypop[myyear][1]+ case  # para elsegundo item se va a sumar los valores de casos
+            citypop[myyear][2]=citypop[myyear][2] + 1 # el tercer realiza la función de contar cuantas veces se cumplen
+# las condiciones.
+# todo lo anterior aliemnta la diccionario citypop
+#Se crea nuevamente un bucle for que permite ingresar al diccionario citypop si se cumple la siguiente condicion
+# se debe de guarda en la variable key
     for key in citypop:
-        if key == city:
-            avg_case1= 100000*citypop[key][1]/citypop[key][0]
-            return print(key, avg_case1)
-def avgweeks (city, my_csv):
+        if key == city: # la condiccion dice si que el key es exactamente igual a city, entonces se calcula lo siguiente:
+            avg_case1= 100000*citypop[key][1]/citypop[key][0] # el porcentaje de casos  por año, dado que sale un numro
+ # muy pequeño se multiplica por 100000, es decir el porcentaje de casos e infeccion es por cada 100000 habitantes.
+            return print(key, avg_case1) # finalmente retorna el key con la variable avg_case1.
+
+
+
+
+        
+def avgweeks (city, my_csv): #se crea la función con el comando def y con nombre avgweeks 
+#y se coloca el parametro city, my_csv es la ruta del archivo Dalziel
     """
     funcion para extraer  el valor promedio de infectados
     """
-    citypop ={}
+    citypop ={} # se crea un diccionario vacio
+# se crea un bucle for, donde se dice que para cada linea del archvio my_csv, lo guarde en line.
     for line in my_csv:
-        mybiweek = line ["biweek"]
-        pop = float(line["pop"])
-        if line["cases"] != "NA":
-            case= float(line ["cases"])
-            citypop[mybiweek]= citypop.get(mybiweek, [0,0,0])
-            citypop[mybiweek][0]= citypop[mybiweek][0]+ pop
-            citypop[mybiweek][1]= citypop[mybiweek][1]+ case
-            citypop[mybiweek][2]=citypop[mybiweek][2] + 1
+        mybiweek = line ["biweek"] #identificar en las lineas los datos que correspondan a biweek (bisemanas) 
+# y lo guarde en mycity
+        pop = float(line["pop"]) #igualmente identificar en line cada linea que corresponda a pop
+#(población) y se asegura con el comando float que dichos valores se trnasformen en un numero, todo eso
+# se gaurda en la variable pop
+        if line["cases"] != "NA": #Se usa if como condicionalidad, donde hace referencia si es que el line
+# el numero de casos es diferente a NA, ejerce las siguientes ordenes.
+            case= float(line ["cases"]) #identifica en line, cada valor que corresponda a cases y convierteles 
+# a un numero con float y todo eso guardale en case
+            citypop[mybiweek]= citypop.get(mybiweek, [0,0,0]) #guardale en el diccionario vacio citypop cada una de las 
+# localidades que esta definida como mybiweek y creale un indenficador con tes diferentes niveles. Get ayuda a devolver
+# los valores para cada keys del diccionario.
+            citypop[mybiweek][0]= citypop[mybiweek][0]+ pop #el primer item se va a sumar los valores de población
+            citypop[mybiweek][1]= citypop[mybiweek][1]+ case # para elsegundo item se va a sumar los valores de casos
+            citypop[mybiweek][2]=citypop[mybiweek][2] + 1  # el tercer realiza la función de contar cuantas veces se cumplen
+# las condiciones.
+# todo lo anterior aliemnta la diccionario citypop
+#Se crea nuevamente un bucle for que permite ingresar al diccionario citypop si se cumple la siguiente condicion
+# se debe de guarda en la variable key
     for key in citypop:
-        if key == city:
-            avg_case2= 100000*citypop[key][1]/citypop[key][0]
-            return print(key, avg_case2)           
+        if key == city: # la condiccion dice si que el key es exactamente igual a city, entonces se calcula lo siguiente:
+            avg_case2= 100000*citypop[key][1]/citypop[key][0] # el porcentaje de casos  por biweek, dado que sale un numro
+ # muy pequeño se multiplica por 100000, es decir el porcentaje de casos e infeccion es por cada 100000 habitantes.
+            return print(key, avg_case2) # finalmente retorna el key con la variable avg_case2.
